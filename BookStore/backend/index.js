@@ -1,20 +1,13 @@
 import express from 'express';//express app
 import {mongoUrl} from './configdb.js';//connection string
 import { mongoose} from'mongoose';//for interaction
-//import {db} from './models/schema.js'//database schema rules
+import {db} from './models/schema.js'//database schema rules
  import {ObjectId} from 'mongodb';
 import routes from './Route/bookroutes.js';
 import cors from 'cors';
 
 
 const app = express();
-
-
-//midlwaere for parsing req body
-app.use(express.json());
-
-//midlwaere for route
-app.use('/books',routes);
 
 //midlwaere for cors
 
@@ -26,6 +19,15 @@ app.use(cors())//option:1 >allow all orgins as default(*)
 //   allowedHeaders: ['content-type','utf-8'],
 //   changeOrigin: true,
 // }));
+
+
+//midlwaere for parsing req body
+app.use(express.json());
+
+//midlwaere for route
+app.use('/books',routes);
+
+
 
 
 

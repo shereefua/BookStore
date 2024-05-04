@@ -33,28 +33,32 @@ router.get("/", async (req, res) => {
 
 
 //route to get all books in database
-router.get('/', async (req,res)=>{
+// router.get('/', async (req,res)=>{
        
 
      
-        try {
+//         try {
             
-          const displayallbooks= await db.find({})//db has the name of collection
-            return res.status(200).json({
-                count:displayallbooks.length,
-                data: displayallbooks
-            });
+//           const displayallbooks= await db.find({})//db has the name of collection
+//             return res.status(200).json({
+//                 count:displayallbooks.length,
+//                 data: displayallbooks
+//             });
             
-        } catch (error) {
-            console.log(error)
-            res.status(500).send({message: error.message})
-        }
+//         } catch (error) {
+//             console.log(error)
+//             res.status(500).send({message: error.message})
+//         }
 
 
-})
+// })
 
 
 //route to create a book
+
+
+
+
 router.post('/', async (req,res)=>{
 //validating usr input before proceding
 const schema=(!req.body.title ||
@@ -62,7 +66,7 @@ const schema=(!req.body.title ||
              !req.body.publishYear)
     try {
         if(schema){
-        return res.status(400).send({
+        return res.status(400).json({
             message:"please provide all the required fields"
         })
     }else{
@@ -146,5 +150,39 @@ router.delete('/:id',async (req,res)=>{
           res.status(500).send({message: error.message})
     }
 })
+
+// //url http://localhost:5000/books/api/v1/qeury?search=s&limit=3
+// //rule: if  user reqest a qeury to find all data starts with s , return. also limiting upto 3
+// ///if not , return first 20 data
+
+// router.get('/api/v1/qeury', async (req,res)=>{
+//     console.log(req.query)
+//     //2nd, after? we r expecting a qeury frm user,its been  destructured.
+    
+
+// try {
+
+//     const {search,limit} =req.query;
+//     //1st
+//    // let sortedData= [...db]
+//    const displayallbooks= await db.find({})//db has the name of collection
+// if(search){
+//      return db.find({ author: search});
+//     }
+
+// if(limit){
+//   // return sortedData= sortedData.slice(0,Number(limit))
+//    return db.limit(Number(limit));
+// }
+
+// res.status(200).json(displayallbooks)
+    
+// } catch (error) {
+//     console.log(error)
+//           res.status(500).send({message: error.message})
+// }
+
+//   }
+// )
 
 export default router;

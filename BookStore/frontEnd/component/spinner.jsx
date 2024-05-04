@@ -1,9 +1,10 @@
 import React from 'react'
+import { ImSpinner10 } from "react-icons/im";
 
-const spinner = () => {
+const Spinner = () => {
   return (
-    <div className='animate-ping w-16 h-16 m-8 rounded-full bg-sky-600'>spinner</div>
+    <div className='animate-ping w-16 h-16 m-8 rounded-full bg-sky-600'><ImSpinner10/></div>
   )
 }
 
-export default spinner
+export default Spinner
